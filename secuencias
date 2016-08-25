@@ -1,0 +1,163 @@
+#include <iostream>
+#include "conio.h"
+
+
+int anotar1();
+void secuencia_impar(int n);
+void secuencia_primos(int n);
+int verificar_primo(int n);
+void secuencia_busqueda( int b);
+void secuencia_impar_primo_par(int n);
+
+using namespace std;
+
+void main()
+{
+	int a,s,op,busqueda;
+	
+cout<<"1. Secuencia de numeros impares"<<endl;
+cout<<"2. Secuencia de numeros primos"<<endl;
+cout<<"3. Busqueda de numeros primos"<<endl;
+cout<<"4. Secuencia impar, primo y par"<<endl;
+cout<<"0. Salir"<<endl;
+cin>>op;
+
+switch(op){
+case 1: {
+
+	a=anotar1();
+	secuencia_impar(a);
+	cout<<endl;
+	break;}
+case 2: {
+
+	a=anotar1();
+	secuencia_primos(a);
+	cout<<endl;
+	break;}
+case 3: {
+
+	
+	cout<<"Ingrese el numero del elemnto buscado: ";
+	cin>>busqueda;
+	secuencia_busqueda(busqueda);
+	
+	cout<<endl;
+	break;}
+case 4: {
+
+	a=anotar1();
+	secuencia_impar_primo_par(a);
+	cout<<endl;
+	break;}
+case 0: {
+	cout<<"salir"<<endl;
+	break;}
+default : {
+	cout<<"valor invalido"<<endl;
+	break;}
+}
+getch();
+}
+
+int anotar1()
+{	int l;
+	do{
+		cout<<"ingrese cantidad de elementos: ";
+		cin>>l;
+		if(l>0)
+		{
+		}
+		else
+		{
+			cout<<endl;
+			do{
+				cout<<"Error... Debes ingresar un valor posistivo: ";
+				cin>>l;}while(l<0);
+
+		}
+
+	}while(l<0);
+return l;
+}
+void secuencia_impar(int n)
+{	int elemento=1;
+	for(int i=1;i<=n;i++)
+	{
+		cout<<elemento<<" -- ";
+		elemento=elemento+2;
+	}
+
+	getch();
+
+
+
+}
+void secuencia_primos(int n)
+{	int primos,noprimo=0,contador=1;
+
+	for(int i=1;contador<=n;i++)
+	{
+		 primos=verificar_primo(i);
+		if(primos==0)
+		{cout<<i<<" -- ";
+		contador=contador+1;
+				}
+		}
+	
+	getch();
+}
+int verificar_primo(int n)
+{int noprimo=0;
+	
+	for(int k=2;k<=n-1;k++)
+		{
+			if(n%k==0)
+			{
+				noprimo=noprimo+1;
+			}
+			else
+			{
+				
+			}
+
+	}
+return noprimo;
+}
+void secuencia_busqueda( int b)
+{	int primos,noprimo=0,contador=0,n;
+		n=b;
+	for(int i=1;contador<=n;i++)
+	{
+		 primos=verificar_primo(i);
+		if(primos==0)
+		{	contador=contador+1;
+
+		if(contador==b){
+
+				cout<<i;
+						}
+				}
+		}
+	
+	getch();
+}
+void secuencia_impar_primo_par(int n)
+{ int i=1,impar=1,primo=1,par=2;
+	while(i<=n){
+		cout<<impar<<" -- ";
+		i=i+1;
+		if(i<=n){
+			cout<<impar<<" -- ";
+		i=i+1;
+
+
+
+
+
+
+
+
+	}
+
+}
