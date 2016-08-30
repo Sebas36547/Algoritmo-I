@@ -1,0 +1,53 @@
+#include <iostream>
+#include "conio.h"
+
+using namespace std;
+
+bool Verficar(int tam);
+void MostrarPrimos(int tam);
+int EnesimoNroPrimo(int i);
+
+void main()
+{
+	int tam, i;
+	cout<<"Ingrese cuantos numeros desea: "<<endl;
+	cin>>tam;
+	MostrarPrimos(tam);
+	getch();
+}
+
+void MostrarPrimos(int tam)
+{
+	int i;
+	for (i=1;i<=tam;i++)
+	{
+		cout<< EnesimoNroPrimo(i) <<" ";
+	}
+}
+
+int EnesimoNroPrimo(int tam)
+{
+	int c=0, cp=0;
+	while(cp<tam)
+	{
+		c++;
+		if (VerificarPrimo(c) == true)
+		{
+			cp++;
+		}
+	}	return (c);
+}
+
+bool VerificarPrimo(int tam)
+{
+	int i;
+	bool k=true;
+	for(i=2; i<tam; i++)
+	{
+		if(tam%i==0)
+		{
+			k=false;
+		}
+	}
+	return (k);
+}
