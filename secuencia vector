@@ -12,17 +12,20 @@ void mostrar (int vec[], int n);
 void mosvec_noprimos(int vec[], int n);
 int verificar_primo(int w);
 int eliminar_primo( int vec[], int n,int vect[]);
-void secuencia_saltada_primos(int vec[], 
+int vector_primos(int vec[], int n);
+void vector_saltado(int vec[], int n,int vect[]);
+
 void main()
 {
-	int vector[max],a, vector2[max],numvect2;
+	int vector[max],a, vector2[max],numvect2,vector3[max],vector4[max],contador;
 	cout<<"Ingrese cantidad de elementos que desea: ";
 	cin>>a;
 	//cargar(vector,a);
-
-	mostrar(vector,a);
-	numvect2=eliminar_primo(vector,a,vector2);
-	mosvec_noprimos(vector2,numvect2);
+	contador=vector_primos(vector3, a);
+	vector_saltado(vector3,contador,vector4);
+	mostrar(vector4,a);
+	//numvect2=eliminar_primo(vector,a,vector2);
+	//mosvec_noprimos(vector2,numvect2);
 
 
 	getch();
@@ -97,3 +100,38 @@ void mosvec_noprimos(int vec[], int n){
 
 	getch();
 }
+int vector_primos(int vec[], int n){
+int primos=0,ch;
+	for(int i=1;primos<n;i++)
+	{
+		ch=verificar_primo(i);
+		
+		if(ch==0)
+		{
+			vec[primos]=i;
+			primos=primos+1;
+		}
+
+
+	}
+	return primos;
+}
+void vector_saltado(int vec[], int n, int vect[]){
+	int i;
+	for( i=0;i<n;i++){
+		
+		vect[i]=vec[i];
+		i=i+1;
+
+		if(i<n){
+			
+			vect[n-i]=vec[i];
+			n=n-1;
+		}
+
+		
+	}
+
+
+}
+	
