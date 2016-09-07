@@ -1,0 +1,242 @@
+#include <iostream>
+#include "conio.h"
+
+int acumulardos(int n,int m);
+int depurar( int n);
+int eliminarigual( int n);
+int invertir(int n);
+int insertar_valor(int n, int m);
+int capicua(int n);
+void planilla(int n);
+void adivinar (int n);
+
+using namespace std;
+
+
+void main()
+{	int op,a,b,concatenar,depuracion,no_iguales,nuevo,saltado,cap;
+	cout<<"1. Concatenar dos numeros"<<endl;
+	cout<<"2. Eliminar numero repetido"<<endl;//REVISAR--REVISAR--REVISAR
+	cout<<"3. Invertir numero natural"<<endl;
+	cout<<"4. Depuracion de digito mayor"<<endl;
+	cout<<"5. Insertar digito"<<endl;
+	cout<<"6. Verificar capicua"<<endl;
+	cout<<"7. Planilla de trabajadores"<<endl;
+	cout<<"8. Adivinar"<<endl;
+	cin>>op;
+	
+	switch(op){
+case 1: {
+	cout<<"ingrese un valor natural: ";
+	cin>>a;
+	cout<<"Ingrese el segundo valor natural: ";
+	cin>>b;
+	concatenar=acumulardos(a,b);
+	cout<<"El nuevo numero es: "<<concatenar;
+	break;}
+case 2 : {
+	cout<<"Ingrese numero natural: REVISAR";
+	cin>>a;
+	no_iguales=eliminarigual(a);
+	cout<<"El nuevo numero es: "<<no_iguales;
+
+	break;}
+case 3 : {
+	cout<<"ingrese un numero natural: ";
+	cin>>a;
+	nuevo=invertir(a);
+	cout<<"El nuevo numero es: "<<nuevo;
+	break;}
+case 4: {
+	cout<<"Ingrese un valor natural: ";
+	cin>>a;
+	depuracion=depurar(a);
+	cout<<"El nuevo numero es: "<<depuracion;
+	break;
+		}
+case 5: {
+	cout<<"Ingrese un numero natural: ";
+	cin>>a;
+	cout<<"Ingrese valor a colocar: ";
+	cin>>b;
+	saltado=insertar_valor(a,b);
+	cout<<"El nuevo numero es: "<<saltado;
+	break;
+		}
+case 6: {
+	cout<<"Ingrese un numero natural: ";
+	cin>>a;
+	cap=capicua(a);
+	if(cap==0)
+	cout<<"El numero cumple la regla de capicua";
+	else
+		cout<<"El numero no cumple la regla de capicua";
+	break;
+		}
+case 7 : {
+	cout<<"Ingrese numero de trabajadores: ";
+	cin>>a;
+	planilla(a);
+	break;
+		 }
+case 8 :{
+	cout<<"La maquina pensara un entre 1 y 100";
+	cout<<"Escriba el numero que piense que sera: ";
+	cin>>a;
+	adivinar(a);
+
+	break;
+		}
+case 0: {
+	cout<<"salir"<<endl;
+	break;}
+default : {
+	cout<<"valor invalido"<<endl;
+	break;}
+}
+getch();
+
+
+}
+int acumulardos(int n, int m)
+{
+	int c=0,w,u,q;
+	if(n<m){
+	for(int i=1;i<=m;i=i*10)
+	{
+		u=(m/i)%10;
+		c=c+1;
+	}
+		
+	w=n*powf(10,c);
+	q=w+m;}
+	else{
+		for(int i=1;i<=n;i=i*10)
+	{
+		u=(n/i)%10;
+		c=c+1;
+	}
+		
+	w=m*powf(10,c);
+	q=w+n;}
+
+	return q;
+}
+int depurar(int n)
+{int mayor=0,u,numero=0,j=1;
+	for(int i=1;i<=n;i=i*10)
+	{
+		u=(n/i)%10;
+		if(mayor<u)
+			mayor=u;
+	}
+for(int i=1;i<=n;i=i*10)
+	{
+		u=(n/i)%10;
+		if(u!=mayor)
+			{numero=numero+(u*j);
+		j=j*10;
+		}
+}
+return numero;
+}
+int eliminarigual( int n)
+{int u,numero=0,j=1,a,c=0;
+	for(int i=1;i<=n;i=i*10)
+	{	a=(n/i)%10;
+		for(int m=1;m<=n;m=m*10)
+		{	 c=0;
+		u=(n/m)%10;
+		if(a==u){
+			c=c+1;}
+		}
+		if(c==1)
+			{numero=numero+(a*j);
+		j=j*10;
+		
+		}
+	
+}
+
+	return numero;
+}
+int invertir(int n)
+{	int u,c,d=0,e=0;
+	for(int i=1;i<=n;i=i*10)
+	{	u=(n/i)%10;
+	
+	e=e+1;
+	}
+	c=e;
+	for(int i=1;i<=n;i=i*10)
+	{
+		u=(n/i)%10;
+		
+		d=d+(u*powf(10,c-1));
+		c=c-1;
+		
+	}	
+	return d;
+}
+int insertar_valor(int n, int m)
+{int c=0,t=0,numero=0,u,num,listo,j=1,cont=1,k=0;
+	num=invertir(n);
+	for(int i=1;i<=num;i=i*10)
+	{	u=(num/i)%10;
+		cont=cont+1;
+		if(m>u){
+		c=c+1;
+		}
+	}
+	
+	for(int i=1;t<=cont;t++)
+	{	if(c==t){
+			numero=numero+(m*powf(10,c));
+				}
+		else{
+			u=(num/i)%10;
+			numero=numero+(u*powf(10,t));
+			i=i*10;
+			}
+		}
+		
+	
+	listo=invertir(numero);
+return listo;
+}
+int capicua(int n)
+{	int num,a,c=0,u;
+	num=invertir(n);
+	for(int i=1;i<=num;i=i*10)
+	{	u=(num/i)%10;
+		a=(n/i)%10;
+		if(a!=u){
+			c=1;
+		}
+	}
+
+
+return c;
+}
+void planilla(int n)
+{int a,sueldo,a_pagar=0;
+	for(int i=1;i<=n;i++){
+ cout<<"   EL trabajador "<<i<<" // Horas trabajadas: ";
+ cin>>a;
+ sueldo=a*20;
+ a_pagar=a_pagar+sueldo;
+ cout<<"---A pagar: "<<sueldo<<endl;
+	}
+
+cout<<"///Total deuda con los trabajadores: "<<a_pagar;
+
+}
+void adivinar (int n)
+{int formula;
+		
+
+
+
+
+}
+
