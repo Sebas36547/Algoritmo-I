@@ -1,5 +1,6 @@
 #include <iostream>
 #include "conio.h"
+#include "stdlib.h"
 
 int acumulardos(int n,int m);
 int depurar( int n);
@@ -10,12 +11,13 @@ int capicua(int n);
 void planilla(int n);
 void adivinar (int n);
 void automorficos(int n);
+int crapulo(int n);
 
 using namespace std;
 
 
 void main()
-{	int op,a,b,concatenar,depuracion,no_iguales,nuevo,saltado,cap;
+{	int op,a,b,concatenar,depuracion,no_iguales,nuevo,saltado,cap,buscrap;
 	cout<<"1. Concatenar dos numeros"<<endl;
 	cout<<"2. Eliminar numero repetido"<<endl;
 	cout<<"3. Invertir numero natural"<<endl;
@@ -23,10 +25,12 @@ void main()
 	cout<<"5. Insertar digito"<<endl;
 	cout<<"6. Verificar capicua"<<endl;
 	cout<<"7. Planilla de trabajadores"<<endl;
-	cout<<"8. Adivinar"<<endl;
+	cout<<"8. Adivinar----sin terminar"<<endl;
+	cout<<"9. Buscar crapulo"<<endl;
 	cout<<"10. Numero automorfico"<<endl;
 	cin>>op;
-	
+	system("cls");
+	cout<<endl;
 	switch(op){
 case 1: {
 	cout<<"ingrese un valor natural: ";
@@ -82,20 +86,24 @@ case 7 : {
 	break;
 		 }
 case 8 :{
-	cout<<"La maquina pensara un entre 1 y 100---sinterminar";
+	cout<<"La maquina pensara un entre 1 y 100";
 	cout<<"Escriba el numero que piense que sera: ";
 	cin>>a;
 	adivinar(a);
 
 	break;
 		}
+case 9 :{
+	cout<<"Ingrese un numero natural: ";
+	cin>>a;
+	buscrap=crapulo(a);
+	cout<<"El nuevo numero es: "<<buscrap;
+	break;
+		}
 case 10 : {
-	cout<<"Ingrese numero limite: --sinterminar";
+	cout<<"Ingrese numero limite: ";
 	cin>>a;
 	automorficos(a);
-
-
-
 	break;}
 case 0: {
 	cout<<"salir"<<endl;
@@ -248,18 +256,38 @@ void adivinar (int n)
 
 
 
-
 }
 void automorficos(int n)
-{ int a,u,cuadrado;
-	for(int i=2;i<=n;i++){
+{ int u,cuadrado,c=0,h,dividor,a,i;
+
+	for(i=5;i<=n;i++){
+
 		cuadrado=i*i;
-		u=i%10;
-		a=cuadrado%10;
 		
-		if(u==cuadrado)
-			cout<<i<<"--";
+		for(h=1;h<=i;h=h*10){
+			c=c+1;
+			u=(i/h)%10;
+			
+		}
+		
+		dividor=powf(10,c);
+		a=cuadrado%dividor;
+		
+		c=0;
+
+		if(i==a)
+		{
+			cout<<i<<"--";}
+		}
+		
+}
+int crapulo(int n)
+{ int suma,u;
+	for(int i=1;i<n;i=i*10)
+	{	u=(n/i)%10;
+		suma=suma+u;
+		if(suma>=9){
+			suma=suma-9;}
 	}
-
-
+return suma;
 }
