@@ -9,6 +9,7 @@ int insertar_valor(int n, int m);
 int capicua(int n);
 void planilla(int n);
 void adivinar (int n);
+void automorficos(int n);
 
 using namespace std;
 
@@ -16,13 +17,14 @@ using namespace std;
 void main()
 {	int op,a,b,concatenar,depuracion,no_iguales,nuevo,saltado,cap;
 	cout<<"1. Concatenar dos numeros"<<endl;
-	cout<<"2. Eliminar numero repetido"<<endl;//REVISAR--REVISAR--REVISAR
+	cout<<"2. Eliminar numero repetido"<<endl;
 	cout<<"3. Invertir numero natural"<<endl;
 	cout<<"4. Depuracion de digito mayor"<<endl;
 	cout<<"5. Insertar digito"<<endl;
 	cout<<"6. Verificar capicua"<<endl;
 	cout<<"7. Planilla de trabajadores"<<endl;
 	cout<<"8. Adivinar"<<endl;
+	cout<<"10. Numero automorfico"<<endl;
 	cin>>op;
 	
 	switch(op){
@@ -35,7 +37,7 @@ case 1: {
 	cout<<"El nuevo numero es: "<<concatenar;
 	break;}
 case 2 : {
-	cout<<"Ingrese numero natural: REVISAR";
+	cout<<"Ingrese numero natural: ";
 	cin>>a;
 	no_iguales=eliminarigual(a);
 	cout<<"El nuevo numero es: "<<no_iguales;
@@ -80,13 +82,21 @@ case 7 : {
 	break;
 		 }
 case 8 :{
-	cout<<"La maquina pensara un entre 1 y 100";
+	cout<<"La maquina pensara un entre 1 y 100---sinterminar";
 	cout<<"Escriba el numero que piense que sera: ";
 	cin>>a;
 	adivinar(a);
 
 	break;
 		}
+case 10 : {
+	cout<<"Ingrese numero limite: --sinterminar";
+	cin>>a;
+	automorficos(a);
+
+
+
+	break;}
 case 0: {
 	cout<<"salir"<<endl;
 	break;}
@@ -141,21 +151,22 @@ for(int i=1;i<=n;i=i*10)
 return numero;
 }
 int eliminarigual( int n)
-{int u,numero=0,j=1,a,c=0;
+{int u,numero=0,j=0,a,c=0;
 	for(int i=1;i<=n;i=i*10)
 	{	a=(n/i)%10;
 		for(int m=1;m<=n;m=m*10)
-		{	 c=0;
-		u=(n/m)%10;
-		if(a==u){
-			c=c+1;}
-		}
-		if(c==1)
-			{numero=numero+(a*j);
-		j=j*10;
+		{	
+			u=(n/m)%10;
+			if(a==u)
+			{
+				c=c+1;
+			}	
 		
 		}
-	
+			if(c==1){
+				numero=numero+(a*powf(10,j));
+				j=j+1;}
+			c=0;
 }
 
 	return numero;
@@ -239,4 +250,16 @@ void adivinar (int n)
 
 
 }
+void automorficos(int n)
+{ int a,u,cuadrado;
+	for(int i=2;i<=n;i++){
+		cuadrado=i*i;
+		u=i%10;
+		a=cuadrado%10;
+		
+		if(u==cuadrado)
+			cout<<i<<"--";
+	}
 
+
+}
