@@ -25,7 +25,7 @@ void main()
 	cout<<"5. Insertar digito"<<endl;
 	cout<<"6. Verificar capicua"<<endl;
 	cout<<"7. Planilla de trabajadores"<<endl;
-	cout<<"8. Adivinar----sin terminar"<<endl;
+	cout<<"8. Adivinar"<<endl;
 	cout<<"9. Buscar crapulo"<<endl;
 	cout<<"10. Numero automorfico"<<endl;
 	cin>>op;
@@ -86,10 +86,10 @@ case 7 : {
 	break;
 		 }
 case 8 :{
-	cout<<"La maquina pensara un entre 1 y 100";
-	cout<<"Escriba el numero que piense que sera: ";
+	cout<<"Escriba un numero entre 1 y 100 para iniciar ";
 	cin>>a;
 	adivinar(a);
+	cout<<"lo lograste"<<endl;
 
 	break;
 		}
@@ -251,11 +251,35 @@ cout<<"///Total deuda con los trabajadores: "<<a_pagar;
 
 }
 void adivinar (int n)
-{int formula;
-		
+{
+	int buscado,numero;
+	
+	buscado=n+rand()%(101-1);
+	cout<<buscado<<endl;
 
-
-
+	while(n!=buscado)
+	{
+			
+		if (n<buscado)
+		{
+			cout<<" Demasiado pequeño"<<endl;
+			
+			cout<<" Prueba un numero mas grande: ";
+			cin>>n;
+			system("cls");
+		}else{
+		if(n>buscado){
+			cout<<" Demasiado grande"<<endl;
+			
+			cout<<" Prueba un numero mas pequeño: ";
+			cin>>n;
+			system("cls");
+		}else{
+			
+			}
+		}
+	}
+	
 }
 void automorficos(int n)
 { int u,cuadrado,c=0,h,dividor,a,i;
@@ -277,16 +301,17 @@ void automorficos(int n)
 
 		if(i==a)
 		{
-			cout<<i<<"--";}
+			cout<<i<<"   ";}
 		}
 		
 }
 int crapulo(int n)
 { int suma,u;
-	for(int i=1;i<n;i=i*10)
+	for(int i=1;i<=n;i=i*10)
 	{	u=(n/i)%10;
+		
 		suma=suma+u;
-		if(suma>=9){
+		if(suma>9){
 			suma=suma-9;}
 	}
 return suma;
