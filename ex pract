@@ -1,0 +1,87 @@
+# include <iostream>
+# include "conio.h"
+
+void cargar(int vec[],int n);
+void primos(int vec[], int n);
+void mostrar ( int vec[], int n);
+
+using namespace std;
+
+
+
+void main()
+{int a,vector[50];
+	cout<<"ingrese cantidad de elementos: ";;
+	cin>>a;
+	cargar(vector,a);
+	primos(vector,a);
+	
+
+getch();
+
+}
+void cargar(int vec[], int n){
+
+	for(int i=0;i<n;i++){
+		cout<<"ingrese valor: ";
+		cin>>vec[i];
+	}
+}
+void mostrar(int vec[], int n){
+
+	for(int i=0;i<n;i++){
+		
+		cout<<vec[i]<<"   ";
+	}
+}
+void primos(int vec[], int n){
+	int i,j,c,cont=0,h=0,igual,u,m,anterior=1,actual=1,cont2,fib=1;
+	for(i=0;i<n;i++)
+	{
+		for(j=2;j<=vec[i]-1;j++)
+		{	
+			if(vec[i]%j==0)
+			{
+				c=c+1;
+			}
+		}
+		
+		if(c!=0)
+		{	
+		vec[h]=vec[i];
+		h=h+1;
+		cont=cont+1;
+		
+		}
+		c=0;
+	}
+	igual=n-cont;
+	cont2=cont;
+	for(u=0;u<igual;u++)
+	{	
+		while(actual<=vec[u])
+		{	
+			
+			
+			cout<<fib<<"--65  "<<endl;
+			actual=fib;
+			fib=fib+anterior;
+			if(vec[u]==fib)
+			{c=c+1;}
+			anterior=actual;
+			
+		}
+		
+		if(c!=0)
+		{	
+		vec[h]=vec[i];
+		h=h+1;
+		cont2=cont2+1;
+		
+		}
+		c=0;
+	}		
+	igual=n-cont2;
+	mostrar(vec,igual);
+	getch();
+}
