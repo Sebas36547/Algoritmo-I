@@ -1,0 +1,34 @@
+#include <iostream>
+#include "conio.h"
+#include "string.h"
+
+
+void contar_minusculas(char a[]);
+using namespace std;
+
+void main()
+{
+	char a[50];
+	
+	cout<<"ingrese una frase: ";
+		gets(a);
+	contar_minusculas(a);
+
+	getch();
+}
+void contar_minusculas(char a[])
+{int z,m,c=0;
+char d;
+	m=strlen(a);
+	for(int i=0;i<m;i++){
+		
+		z=a[i];
+	if((z>=97) && (z<=122)){
+		
+			c=c+1;
+	}
+
+	}
+	cout<<"La cantidad de minusculas es: "<<c;
+
+}
