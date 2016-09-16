@@ -1,0 +1,36 @@
+#include <iostream>
+#include "conio.h"
+#include "string.h"
+
+
+void palindromo_verificacion(char a[]);
+using namespace std;
+
+void main()
+{
+	char a[30];
+	cout<<"ingrese una frase: ";
+		gets(a);
+	palindromo_verificacion(a);
+
+	getch();
+}
+
+void palindromo_verificacion(char a[])
+{char m[50],temp;
+	int z;
+		strcpy(m,a);
+		z=strlen(a);
+	for(int i=0;i<z/2;i++){
+		temp=a[i];
+		a[i]=a[z-1-i];
+		a[z-1-i]=temp;
+	}	
+		
+		if(strcmp(a,m)!=0)
+			cout<<"la palabra no es palindrmo";
+		else
+			cout<<"Es palindromo";
+
+		
+}
