@@ -1,0 +1,30 @@
+#include <iostream>
+#include "conio.h"
+#include "string.h"
+
+
+void valor_ascii(char a[]);
+using namespace std;
+
+void main()
+{
+	char a[50];
+	
+	cout<<"ingrese una frase: ";
+	gets(a);
+		valor_ascii(a);
+
+	getch();
+}
+void valor_ascii(char a[])
+{int z,m,c=0;
+char d;
+	m=strlen(a);
+	for(int i=0;i<m;i++){
+		
+		z=a[i];
+		cout<<"valor ascii de "<<a[i]<<"  es:  "<<z<<endl;
+	}
+		
+
+}
