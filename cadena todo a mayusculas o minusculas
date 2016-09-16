@@ -1,0 +1,28 @@
+#include <iostream>
+#include "conio.h"
+#include "string.h"
+
+
+void convertir_letras(char a[]);
+using namespace std;
+
+void main()
+{
+	char a[30];
+	cout<<"ingrese una frase: ";
+		gets(a);
+	convertir_letras(a);
+
+	getch();
+}
+
+void convertir_letras(char a[])
+{
+	cout<<"Todo a mayusculas"<<endl;
+	strupr(a);
+
+	cout<<a<<endl;
+	cout<<"Todo a minusculas"<<endl;
+	strlwr(a);
+	cout<<a<<endl;	
+}
