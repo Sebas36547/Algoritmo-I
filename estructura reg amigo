@@ -1,0 +1,46 @@
+#include <iostream>
+#include "conio.h"
+#include "string.h"
+
+struct registro_amigo{
+	int edad;
+	char sexo;
+	char nombre[30];
+};
+void registrar( registro_amigo vec[],int n);
+void mostrar (registro_amigo vec[],int n);
+using namespace std;
+
+void main()
+{	int a;
+	registro_amigo vector[50];
+	cout<<"Escriba numero de amigos a registrar: ";
+	cin>>a;
+	registrar(vector,a);
+	mostrar(vector,a);
+
+	getch();
+}
+void registrar( registro_amigo vec[],int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		fflush(stdin);
+		cout<<"Escriba su nombre: ";
+		gets(vec[i].nombre);
+		cout<<"Escriba su edad: ";
+		cin>>vec[i].edad;
+		cout<<"m si es hombre o f si es mujer: ";
+		cin>>vec[i].sexo;
+	}
+
+}
+void mostrar (registro_amigo vec[],int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		cout<<"Nombre: "<<vec[i].nombre<<endl;
+		cout<<"Edad: "<<vec[i].edad<<endl;
+		cout<<"Sexo: "<<vec[i].sexo<<endl;
+	}
+}
