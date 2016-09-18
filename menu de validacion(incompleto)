@@ -18,15 +18,17 @@ void main()
 	switch(op){
 	case 1: {
 		do{
+			fflush(stdin);
 			cout<<"Ingrese una frase: ";
 			gets(a);
-		w=validar_letras(a);
+			w=validar_letras(a);
 		
 		}while(w!=0);
 		cout<<"son solo letras"<<endl;
 		break;}
 	case 2: {
 		do{
+			fflush(stdin);
 			cout<<"Ingrese un numero: ";
 			gets(a);
 		w=validar_numeros(a);
@@ -45,8 +47,8 @@ int validar_letras(char n[])
 
 		for(int i=0;i<z;i++)
 		{	d=n[i];
-			cout<<d<<endl;
-			if((d>=97) && (d<=122) )
+			
+			if(((d>96) && (d<123) )|| (d==32) )
 			{
 			
 			}
@@ -54,7 +56,8 @@ int validar_letras(char n[])
 				{
 					c=1;
 			}
-			
+			if(z==0)
+			c=1;
 		}
 return c;
 
@@ -62,10 +65,10 @@ return c;
 int validar_numeros(char n[])
 { int z,d,c=0;
 	z=strlen(n);
-
+	
 		for(int i=0;i<z;i++)
 		{	d=n[i];
-		
+
 			if((d>=48) && (d<=57) )
 			{
 			
@@ -74,8 +77,10 @@ int validar_numeros(char n[])
 				{
 					c=1;
 			}
-			cout<<c<<endl;
-		}
+			
+			}
+		if(z==0)
+			c=1;
 return c;
 
 }
