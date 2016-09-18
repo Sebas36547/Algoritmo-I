@@ -1,0 +1,81 @@
+#include <iostream>
+#include "conio.h"
+#include "string.h"
+
+int validar_letras(char n[]);
+int validar_numeros(char n[]);
+
+using namespace std;
+
+void main()
+{
+	int op,w;
+	char a[100];
+	cout<<"1. Validar solo letras"<<endl;
+	cout<<"2. Validar solo numeros"<<endl;
+	cin>>op;
+
+	switch(op){
+	case 1: {
+		do{
+			cout<<"Ingrese una frase: ";
+			gets(a);
+		w=validar_letras(a);
+		
+		}while(w!=0);
+		cout<<"son solo letras"<<endl;
+		break;}
+	case 2: {
+		do{
+			cout<<"Ingrese un numero: ";
+			gets(a);
+		w=validar_numeros(a);
+		
+		}while(w!=0);
+		cout<<"son solo numeros"<<endl;
+
+
+		break;}
+	}
+	getch();
+}
+int validar_letras(char n[])
+{ int z,d,c=0;
+	z=strlen(n);
+
+		for(int i=0;i<z;i++)
+		{	d=n[i];
+			cout<<d<<endl;
+			if((d>=97) && (d<=122) )
+			{
+			
+			}
+			else
+				{
+					c=1;
+			}
+			
+		}
+return c;
+
+}
+int validar_numeros(char n[])
+{ int z,d,c=0;
+	z=strlen(n);
+
+		for(int i=0;i<z;i++)
+		{	d=n[i];
+		
+			if((d>=48) && (d<=57) )
+			{
+			
+			}
+			else
+				{
+					c=1;
+			}
+			cout<<c<<endl;
+		}
+return c;
+
+}
