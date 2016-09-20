@@ -1,0 +1,140 @@
+#include <iostream>
+#include "conio.h"
+
+
+struct estructura{
+	int vec[50];
+};
+void cargarvector_vector(estructura tvec[],int n);
+void mostrarvector_vector(estructura tvec[],int n);
+void secuencia( int n, estructura tvec[]);
+void ordenar(estructura tvec[],int n);
+void ordenar_primo(estructura tvec[],int n);
+using namespace std;
+
+
+void main()
+{	int a;
+	estructura vector[50];
+	cout<<"Escriba numero de elementos: ";
+	cin>>a;
+	//secuencia( a,vector);
+	cargarvector_vector(vector,a);
+	ordenar_primo(vector,a);
+	ordenar(vector,a);
+	mostrarvector_vector(vector,a);
+	getch();
+}
+void cargarvector_vector(estructura tvec[],int n)
+{
+	for(int i=0;i<n;i++){
+		cout<<"vector: "<<i<<endl;
+		for(int m=0;m<n;m++){
+			cout<<"ingrese valor: ";
+			cin>>tvec[i].vec[m];
+		}
+	}
+
+}
+void mostrarvector_vector(estructura tvec[],int n)
+{
+	for(int i=0;i<n;i++){
+		for(int m=0;m<n;m++){
+			cout<<tvec[i].vec[m]<<"   ";
+		}
+		cout<<endl;
+	}
+	
+}
+void secuencia( int n, estructura tvec[])
+{int suma=0,prim1=1,prim2=1;
+	for(int i=0;i<n;i++){
+		for(int m=0;m<n;m++){
+			if(i==m){
+				suma=suma+1;
+				tvec[i].vec[m]=suma;
+			}else{
+				if(i<m){
+					tvec[i].vec[m]=prim1;
+					prim1=prim1+2;
+					
+				}else{
+					if(i>m){
+						tvec[i].vec[m]=prim2;
+						prim2=prim2+2;
+					}
+				}
+			}
+		}
+	}
+}
+void ordenar(estructura tvec[],int n)
+{	int temp;
+	
+	for(int i=0;i<n;i++){
+		for(int m=0;m<n;m++){
+			
+			for(int j=m+1;j<n;j++){
+				if(tvec[i].vec[m]>tvec[i].vec[j])
+					{
+					temp=tvec[i].vec[m];
+					tvec[i].vec[m]=tvec[i].vec[j];
+					tvec[i].vec[j]=temp;
+					}
+
+			}
+		
+		}
+
+	}
+}
+void ordenar_primo(estructura tvec[],int n)
+{	int temp,auxvec[50],c=0,aux=0;
+	
+	for(int i=0;i<n;i++){
+		for(int m=0;m<n;m++){
+					for(int pr=2;pr<tvec[i].vec[m]-1;pr++){
+							if(tvec[i].vec[m]%pr==0)
+							{
+								c=1;
+							}
+					}
+							if(c==0){
+								auxvec[aux]=tvec[i].vec[m];
+								aux=aux+1;
+							}
+							c=0;
+		
+			}
+					aux=0;
+					m=0;
+				for(int r=aux+1;r<aux+1;r++){
+				if(auxvec[aux]>auxvec[r])
+					{
+					temp=auxvec[aux];
+					auxvec[aux]=auxvec[r];
+					auxvec[r]=temp;
+					}
+
+			}
+				aux=0;
+				m=0;
+				for(int m=0;m<n;m++){
+				for(int pr=2;pr<tvec[i].vec[m]-1;pr++){
+							if(tvec[i].vec[m]%pr==0)
+							{
+								c=1;
+							}
+				}
+							if(c==0){
+								tvec[i].vec[m]=auxvec[aux];
+								aux=aux+1;
+							}
+							c=0;
+		
+			}
+
+
+		}
+	}
+
