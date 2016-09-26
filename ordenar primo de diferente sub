@@ -21,7 +21,7 @@ void main()
 	//secuencia( a,vector);
 	cargarvector_vector(vector,a);
 	ordenar_primo(vector,a);
-	ordenar(vector,a);
+	//ordenar(vector,a);
 	mostrarvector_vector(vector,a);
 	getch();
 }
@@ -42,7 +42,7 @@ void mostrarvector_vector(estructura tvec[],int n)
 		for(int m=0;m<n;m++){
 			cout<<tvec[i].vec[m]<<"   ";
 		}
-		cout<<endl;
+		
 	}
 	
 }
@@ -89,7 +89,8 @@ void ordenar(estructura tvec[],int n)
 	}
 }
 void ordenar_primo(estructura tvec[],int n)
-{	int temp,auxvec[50],c=0,aux=0;
+{	int temp,auxvec[50],c=0,aux=0,f=0;
+
 	
 	for(int i=0;i<n;i++){
 		for(int m=0;m<n;m++){
@@ -101,24 +102,33 @@ void ordenar_primo(estructura tvec[],int n)
 					}
 							if(c==0){
 								auxvec[aux]=tvec[i].vec[m];
+								
 								aux=aux+1;
 							}
 							c=0;
+							
 		
 			}
-					aux=0;
-					m=0;
-				for(int r=aux+1;r<aux+1;r++){
-				if(auxvec[aux]>auxvec[r])
-					{
-					temp=auxvec[aux];
-					auxvec[aux]=auxvec[r];
-					auxvec[r]=temp;
-					}
+	}			
+					
+
+
+			for(int m=0;m<aux+1;m++){
+				for(int r=m+1;r<aux+1;r++){
+					if(auxvec[m]>auxvec[r])
+						{
+						temp=auxvec[m];
+						auxvec[m]=auxvec[r];
+						auxvec[r]=temp;
+						}
+					
 
 			}
-				aux=0;
-				m=0;
+		}
+			
+
+
+			for(int i=0;i<n;i++){	
 				for(int m=0;m<n;m++){
 				for(int pr=2;pr<tvec[i].vec[m]-1;pr++){
 							if(tvec[i].vec[m]%pr==0)
@@ -127,14 +137,13 @@ void ordenar_primo(estructura tvec[],int n)
 							}
 				}
 							if(c==0){
-								tvec[i].vec[m]=auxvec[aux];
-								aux=aux+1;
+								tvec[i].vec[m]=auxvec[f];
+								f=f+1;
 							}
 							c=0;
 		
 			}
-
-
 		}
-	}
 
+}
+	
