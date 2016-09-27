@@ -1,0 +1,108 @@
+#include <iostream>
+#include "conio.h"
+#define fila 20
+#define columna 20
+
+using namespace std;
+
+void cargar_matriz(int mat[fila][columna],int n, int m);
+int valormayor(int mat[fila][columna],int n, int m);
+void mostra_matriz(int mat[fila][columna],int n, int m);
+void ordenar_matriz(int mat[fila][columna],int n, int m);
+void sumarprimos(int mat[fila][columna],int n, int m, int vec[]);
+
+void main()
+{
+	int nfil,ncol,matriz[fila][columna],z,vector[50];
+	cout<<"ingrese numero de columnas: ";
+	cin>>ncol;
+	cout<<"ingrese numero de filas: ";
+	cin>>nfil;
+	cargar_matriz(matriz,ncol,nfil);
+	//	z=valormayor(matriz,ncol,nfil);
+	//	cout<<"el valor mayor es: "<<z<<endl;
+	//	ordenar_matriz(matriz,ncol,nfil);
+	sumarprimos(matriz,ncol,nfil,vector);
+		mostra_matriz(matriz,ncol,nfil);
+	getch();
+}
+
+void cargar_matriz(int mat[fila][columna],int n, int m)
+{
+	for(int i=0;i<m;i++){
+		cout<<endl;
+		for(int j=0;j<n;j++){
+			cout<<"ingrese valor de mat["<<i<<"]["<<j<<"]: ";
+			cin>>mat[i][j];
+		}
+	}
+
+}
+
+void mostra_matriz(int mat[fila][columna],int n, int m)
+{
+	for(int i=0;i<m;i++){
+		for(int j=0;j<n;j++){
+			cout<<mat[i][j]<<"   ";
+		}
+		cout<<endl;
+	}
+
+}
+
+int valormayor(int mat[fila][columna],int n, int m)
+{int mayor=0;
+	for(int i=0;i<m;i++){
+		for(int j=0;j<n;j++){
+			if(mat[i][j]>mayor){
+				mayor=mat[i][j];
+			}
+		}
+	}
+	return mayor;
+}
+
+void ordenar_matriz(int mat[fila][columna],int n, int m)
+{
+	int temp;
+	for(int i=0;i<m;i++)
+	{
+		for(int j=0;j<n;j++)
+		{
+			for(int f=j+1;f<n;f++)
+			{
+				if(mat[i][j]>mat[i][f])
+				{
+					temp=mat[i][j];
+					mat[i][j]=mat[i][f];
+					mat[i][f]=temp;
+				}
+			}
+		}
+	}
+}
+
+void sumarprimos(int mat[fila][columna],int n, int m, int vec[])
+{int c=0,primos=0;
+	for(int i=0;i<m;i++){
+		for(int j=0;j<n;j++){
+			for(int f=2;f<=mat[i][j]-1;f++){
+				if(mat[i][j]%f==0){
+						c=1;
+				}
+
+			}
+			
+			if(c==0){
+				primos=primos+mat[i][j];
+			}
+			c=0;
+			}
+		
+		vec[i]=primos;
+		primos=0;
+		}
+	for(int u=0;u<m;u++){
+		cout<<vec[u]<<endl;
+	}
+}
