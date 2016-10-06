@@ -1,0 +1,222 @@
+#include <iostream>
+#include "conio.h"
+#define fil 50
+#define col 50
+
+void cargar_matriz(int mat[fil][col],int fi,int co);
+void mostrar_matriz(int mat[fil][col],int fi,int co);
+void suma_de_matrices(int mat3[fil][col],int mat[fil][col],int mat2[fil][col],int fi,int co);
+void multiplicar_matriz(int mat3[fil][col],int mat[fil][col],int mat2[fil][col],int fi,int co,int fi2,int co2);
+void matriz_transpuesta(int mat2[fil][col],int mat[fil][col],int fi,int co);
+void matriz_espiral(int mat[fil][col],int fi,int co);
+using namespace std;
+
+void main()
+{
+int op,matriz [fil][col],matriz2 [fil][col],matsuma[fil][col],fila,columna,fila2,columna2,matmulti[fil][col];
+	cout<<"1. Cargar matriz espiral"<<endl;
+	cout<<"2. Suma de matrices"<<endl;
+	cout<<"3. Multiplicacion de matrices"<<endl;
+	cout<<"4. Calcular matriz transpuesta"<<endl;
+	cout<<"5. Calcular matriz inversa"<<endl;
+	cout<<"0. Salir"<<endl;
+	cin>>op;
+		switch(op){
+			case 1 :{
+					cout<<"Ingrese tamaño de fila: ";
+					cin>>fila;
+					cout<<"Ingrese tamaño de columna: ";
+					cin>>columna;
+					matriz_espiral(matriz,fila,columna);
+					mostrar_matriz(matriz,fila,columna);
+				break;}
+			case 2 :{
+					cout<<"Matriz 1";
+					cout<<"Ingrese tamaño de fila: ";
+					cin>>fila;
+					cout<<"Ingrese tamaño de columna: ";
+					cin>>columna;
+					cargar_matriz(matriz,fila,columna);
+					cout<<"Matriz 2";
+					cout<<"Ingrese tamaño de fila: ";
+					cin>>fila2;
+					cout<<"Ingrese tamaño de columna: ";
+					cin>>columna2;
+					cargar_matriz(matriz2,fila2,columna2);
+				if((fila==fila2) && (columna==columna2))
+					{
+						suma_de_matrices(matsuma,matriz,matriz2,fila,columna);
+						mostrar_matriz(matsuma,fila2,columna2);
+					}
+				else
+						cout<<"No se pueden sumar";
+					
+				break;}
+			case 3 :{
+					cout<<"Matriz 1"<<endl;
+					cout<<"Ingrese tamaño de fila: ";
+					cin>>fila;
+					cout<<"Ingrese tamaño de columna: ";
+					cin>>columna;
+					cargar_matriz(matriz,fila,columna);
+					cout<<"Matriz 2"<<endl;
+					cout<<"Ingrese tamaño de fila: ";
+					cin>>fila2;
+					cout<<"Ingrese tamaño de columna: ";
+					cin>>columna2;
+					cargar_matriz(matriz2,fila2,columna2);
+				if(columna==fila2)
+					{
+						multiplicar_matriz(matmulti,matriz,matriz2,fila,columna,fila2,columna2);
+						mostrar_matriz(matmulti,fila,columna2);
+					}
+				else
+					cout<<"No se pueden multiplicar";
+				break;}
+			case 4 :{
+					cout<<"Ingrese tamaño de fila: ";
+					cin>>fila;
+					cout<<"Ingrese tamaño de columna: ";
+					cin>>columna;
+					cargar_matriz(matriz,fila,columna);
+					matriz_transpuesta(matriz2,matriz,fila,columna);
+					mostrar_matriz(matriz,fila,columna);
+					cout<<endl;
+					mostrar_matriz(matriz2,columna,fila);
+				break;}
+			case 5 :{
+					cout<<"Ingrese tamaño de fila: ";
+					cin>>fila;
+					cout<<"Ingrese tamaño de columna: ";
+					cin>>columna;
+					cargar_matriz(matriz,fila,columna);
+
+
+				break;}
+			case 0 :{
+
+				break;}
+			default :{
+					cout<<"Valor invalido"<<endl;
+				break; }
+				}
+		getch();
+}
+void cargar_matriz(int mat[fil][col],int fi,int co)
+{	
+	for(int i=0;i<fi;i++)
+	{
+		cout<<"fila "<<i<<endl;
+		for(int j=0;j<co;j++)
+		{
+			cout<<"Ingrese valor: ";
+			cin>>mat[i][j];
+		}
+	}
+}
+void mostrar_matriz(int mat[fil][col],int fi,int co)
+{
+	for(int i=0;i<fi;i++)
+	{
+		for(int j=0;j<co;j++)
+		{
+			if(mat[i][j]<10){
+				cout<<" ";}
+			cout<<mat[i][j]<<"  ";
+		}
+		cout<<endl;
+	}
+}
+void suma_de_matrices(int mat3[fil][col],int mat[fil][col],int mat2[fil][col],int fi,int co)
+{
+	for(int i=0;i<fi;i++)
+	{
+		for(int j=0;j<co;j++)
+		{
+			mat3[i][j]=mat[i][j]+mat2[i][j];
+		}
+	}
+}
+void matriz_transpuesta(int mat2[fil][col],int mat[fil][col],int fi,int co)
+{	
+	for(int i=0;i<fi;i++)
+	{
+		for(int j=0;j<co;j++)
+		{
+			mat2[j][i]=mat[i][j];
+		}
+	}
+}
+void multiplicar_matriz(int mat3[fil][col],int mat[fil][col],int mat2[fil][col],int fi,int co,int fi2,int co2)
+{int cont=0;
+	for(int i=0;i<fi;i++)
+	{
+		for(int m=0;m<co2;m++)
+		{
+			for(int j=0;j<co;j++)
+			{
+			cont=cont+(mat[i][j]*mat2[j][m]);
+			}
+			mat3[i][m]=cont;
+			cont=0;
+		}
+	}
+}
+void matriz_espiral(int mat[fil][col],int fi,int co)
+{	int cont=0,z,i=0,j,k,m,p,c=0,vueltas=0,l=0;
+	z=fi+(fi-1);
+	for(int i=0;i<fi;i++)
+	{
+		for(int j=0;j<co;j++)
+		{
+			mat[i][j]=0;
+		}
+	}
+	while(vueltas<=z)
+	{
+			if(vueltas<=z)
+			{	
+				for(j=0;j<co;j++)
+				{
+					if(mat[i+l][j]==c){
+						cont=cont+1;
+						mat[i+l][j]=cont;}
+				}
+			vueltas++;
+			}
+			j=j-1;
+			if(vueltas<=z)
+			{	
+				for( k=0;k<fi;k++)
+				{
+					if(mat[k][j-l]==c){
+						cont=cont+1;
+						mat[k][j-l]=cont;}
+				}
+			vueltas++;
+			}
+			k=k-1;
+			if(vueltas<=z)
+			{	
+				for( m=fi-1;m>-1;m--)
+				{
+					if(mat[k-l][m]==c){
+						cont=cont+1;
+						mat[k-l][m]=cont;}
+				}
+			vueltas++;
+			}
+			m=m+1;
+			if(vueltas<=z)
+			{	
+				for( p=fi-1;p>-1;p--)
+				{	
+					if(mat[p][m+l]==c){
+						cont=cont+1;
+						mat[p][m+l]=cont;}
+				}
+			vueltas++;
+			}
+		l=l+1;
+	}
+}
