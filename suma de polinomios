@@ -1,0 +1,116 @@
+#include <iostream>
+#include "conio.h"
+
+struct poli{
+	int valor;
+	int expo;
+};
+using namespace std;
+
+int cargarpolinomio(poli vec[]);
+int revisar(poli vec[], int n);
+void ordenar(poli vec[], int n);
+void mostrar(poli vec[], int n);
+void main()
+{	poli vector[30];
+	int a,b;
+	a=cargarpolinomio(vector);
+	b=revisar(vector,a);
+	mostrar(vector,b);
+	getch();
+}
+int cargarpolinomio(poli vec[]){
+	int a,b,z;
+	cout<<"ingrese la cantidad de elementos en el polinomio 1: ";
+	cin>>a;
+	for(int i=0;i<a;i++){
+		cout<<"ingrese valor: ";
+		cin>>vec[i].valor;
+		cout<<"ingrese exponente: ";
+		cin>>vec[i].expo;}
+	cout<<"ingrese la cantidad de elementos en el polinomio 2: ";
+	cin>>b;
+	for(int i=a;i<a+b;i++){
+		cout<<"ingrese valor: ";
+		cin>>vec[i].valor;
+		cout<<"ingrese exponente: ";
+		cin>>vec[i].expo;
+	}
+	z=a+b;
+return	z;
+}
+int revisar(poli vec[],int n){
+	int j;
+	for(int i=0;i<n;i++){
+		for( j=i+1;j<n;j++){
+			if(vec[i].expo==vec[j].expo)
+			{	
+				vec[i].valor=vec[i].valor+vec[j].valor;
+				
+				for(int k=j+1;k<n;k++){
+					vec[k-1].expo=vec[k].expo;
+					vec[k-1].valor=vec[k].valor;
+				}
+				n=n-1;
+			}
+
+			}
+		j=j-1;			
+		}
+		ordenar(vec,n);
+			
+return n;
+}
+void mostrar(poli vec[], int n){
+	cout<<endl;
+	cout<<"La suma de los polinomios es: ";
+	for(int i=0;i<n;i++){
+		if((vec[i].expo>1) &&(vec[i].valor>1)){
+			cout<<vec[i].valor<<"x^"<<vec[i].expo;
+		if(i!=n-1){
+			cout<<"+";}
+		}
+		if((vec[i].expo==1) &&(vec[i].valor>1)){
+			cout<<vec[i].valor;
+		if(i!=n-1){
+			cout<<"x+";}
+		}
+		if((vec[i].expo>1) &&(vec[i].valor==1)){
+			cout<<"x^"<<vec[i].expo;
+		if(i!=n-1){
+			cout<<"+";}
+		}
+		if((vec[i].expo!=0) &&(vec[i].valor==0)){
+			}
+		if((vec[i].expo==0) &&(vec[i].valor>1)){
+			cout<<vec[i].valor;
+		if(i!=n-1){
+			cout<<"+";}
+		}
+		if((vec[i].expo==0) &&(vec[i].valor==0)){
+			}
+		
+	}
+
+
+}
+void ordenar(poli vec[], int n){
+	int temp;
+	for(int i=0;i<n;i++){
+		for(int j=i+1;j<n;j++){
+		if(vec[i].expo<vec[j].expo)
+		{
+			temp=vec[i].expo;
+			vec[i].expo=vec[j].expo;
+			vec[j].expo=temp;
+			temp=vec[i].valor;
+			vec[i].valor=vec[j].valor;
+			vec[j].valor=temp;
+
+			}
+		}
+	}
+
+
+
+}
