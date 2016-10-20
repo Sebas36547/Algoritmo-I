@@ -52,10 +52,11 @@ int revisar(poli vec[],int n){
 					vec[k-1].valor=vec[k].valor;
 				}
 				n=n-1;
+				j=j-1;
 			}
 
 			}
-		j=j-1;			
+					
 		}
 		ordenar(vec,n);
 			
