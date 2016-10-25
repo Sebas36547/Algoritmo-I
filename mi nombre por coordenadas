@@ -1,0 +1,391 @@
+#include <iostream>
+#include "conio.h"
+#define fil 10
+#define col 70
+
+using namespace std;
+void cargar(char mat[fil][col]);
+void cargars(char matriz[fil][col]);
+void cargare(char matriz[fil][col]);
+void cargarb(char matriz[fil][col]);
+void cargara(char matriz[fil][col]);
+void cargarsmini(char matriz[fil][col]);
+void cargart(char matriz[fil][col]);
+void cargari(char matriz[fil][col]);
+void cargara2(char matriz[fil][col]);
+void cargarn(char matriz[fil][col]);
+void mostrar(char matriz[fil][col]);
+
+void main()
+{	
+	char matriz[fil][col];
+	
+	cargar(matriz);
+	
+	cargars(matriz);
+	cargare( matriz);
+	cargarb( matriz);
+	cargara(matriz);
+	cargarsmini(matriz);
+	cargart(matriz);
+	cargari(matriz);
+	cargara2( matriz);
+	cargarn( matriz);
+	mostrar(matriz);
+	getch();
+}
+void cargar(char matriz[fil][col]){
+	for(int i=0;i<19;i++){
+		for(int j=0;j<61;j++){
+			matriz[i][j]=32;
+		}
+	}
+		
+}
+
+void mostrar(char matriz[fil][col]){
+
+	for(int i=0;i<19;i++){
+		for(int j=0;j<61;j++){
+			cout<<matriz[i][j];
+		}cout<<endl;
+	}
+
+	
+
+}
+void cargars(char matriz[fil][col]){
+int x1, y1, x2, y2;
+	x1=2;
+	y1=2;
+	x2=2;
+	y2=7;
+	for(int j=y1;j<=y2;j++){
+			matriz[x1][j]=196;
+		}
+	matriz[2][2]=218;
+	x1=3;
+	y1=2;
+	x2=5;
+	y2=2;
+	
+	for(int j=x1;j<=x2;j++){
+			matriz[j][y1]=179;
+		}
+	matriz[5][2]=192;
+
+	x1=5;
+	y1=3;
+	x2=5;
+	y2=7;
+	for(int j=y1;j<=y2;j++){
+			matriz[x1][j]=196;
+		}
+	matriz[5][7]=191;
+	x1=6;
+	y1=7;
+	x2=8;
+	y2=7;
+	
+	for(int j=x1;j<=x2;j++){
+			matriz[j][y1]=179;
+		}
+	matriz[8][7]=217;
+
+	x1=8;
+	y1=2;
+	x2=8;
+	y2=6;
+	for(int j=y1;j<=y2;j++){
+			matriz[x1][j]=196;
+		}
+	
+}
+void cargare(char matriz[fil][col]){
+int x1, y1, x2, y2;
+	
+	x1=5;
+	y1=10;
+	x2=5;
+	y2=14;
+	for(int j=y1;j<=y2;j++){
+			matriz[x1][j]=196;
+		}
+	x1=5;
+	y1=14;
+	x2=7;
+	y2=14;
+	
+	for(int j=x1;j<=x2;j++){
+			matriz[j][y1]=179;
+		}
+	x1=7;
+	y1=10;
+	x2=7;
+	y2=14;
+	for(int j=y1;j<=y2;j++){
+			matriz[x1][j]=196;
+		}
+	x1=5;
+	y1=9;
+	x2=8;
+	y2=9;
+	
+	for(int j=x1;j<=x2;j++){
+			matriz[j][y1]=179;
+		}
+	
+
+	x1=8;
+	y1=9;
+	x2=8;
+	y2=14;
+	for(int j=y1;j<=y2;j++){
+			matriz[x1][j]=196;
+		}
+
+	
+	matriz[8][9]=192;
+	matriz[7][9]=195;
+	matriz[5][9]=218;
+	matriz[5][14]=191;
+	matriz[7][14]=217;
+}
+void cargarb(char matriz[fil][col]){
+int x1, y1, x2, y2;
+	
+	x1=5;
+	y1=16;
+	x2=5;
+	y2=21;
+	for(int j=y1;j<=y2;j++){
+			matriz[x1][j]=196;
+		}
+	x1=5;
+	y1=21;
+	x2=8;
+	y2=21;
+	
+	for(int j=x1;j<=x2;j++){
+			matriz[j][y1]=179;
+		}
+	
+	x1=2;
+	y1=16;
+	x2=8;
+	y2=16;
+	
+	for(int j=x1;j<=x2;j++){
+			matriz[j][y1]=179;
+		}
+	
+
+	x1=8;
+	y1=16;
+	x2=8;
+	y2=21;
+	for(int j=y1;j<=y2;j++){
+			matriz[x1][j]=196;
+		}
+	matriz[5][16]=195;
+	matriz[8][16]=192;
+	matriz[5][21]=191;
+	matriz[8][21]=217;
+}
+void cargara(char matriz[fil][col]){
+int x1, y1, x2, y2;
+	
+	x1=5;
+	y1=23;
+	x2=5;
+	y2=27;
+	for(int j=y1;j<=y2;j++){
+			matriz[x1][j]=196;
+		}
+	x1=5;
+	y1=27;
+	x2=8;
+	y2=27;
+	
+	for(int j=x1;j<=x2;j++){
+			matriz[j][y1]=179;
+		}
+	x1=6;
+	y1=23;
+	x2=6;
+	y2=27;
+	for(int j=y1;j<=y2;j++){
+			matriz[x1][j]=196;
+		}
+	x1=7;
+	y1=23;
+	x2=8;
+	y2=23;
+	
+	for(int j=x1;j<=x2;j++){
+			matriz[j][y1]=179;
+		}
+	
+
+	x1=8;
+	y1=23;
+	x2=8;
+	y2=27;
+	for(int j=y1;j<=y2;j++){
+			matriz[x1][j]=196;
+		}
+	matriz[5][23]=218;
+	matriz[6][27]=180;
+	matriz[8][23]=192;
+	matriz[6][23]=218;
+	matriz[5][27]=191;
+	matriz[8][27]=217;
+	matriz[8][28]=92;
+}
+void cargarsmini(char matriz[fil][col]){
+int x1, y1, x2, y2;
+	x1=5;
+	y1=30;
+	x2=5;
+	y2=35;
+	for(int j=y1;j<=y2;j++){
+			matriz[x1][j]=196;
+		}
+	x1=6;
+	y1=30;
+	x2=6;
+	y2=35;
+	for(int j=y1;j<=y2;j++){
+			matriz[x1][j]=196;
+		}
+	x1=8;
+	y1=30;
+	x2=8;
+	y2=35;
+	for(int j=y1;j<=y2;j++){
+			matriz[x1][j]=196;
+		}
+	matriz[5][30]=218;
+	matriz[7][35]=179;
+	matriz[6][30]=192;
+	matriz[6][35]=191;
+	matriz[8][35]=217;
+}
+void cargart(char matriz[fil][col]){
+int x1, y1, x2, y2;
+	x1=2;
+	y1=39;
+	x2=8;
+	y2=39;
+	
+	for(int j=x1;j<=x2;j++){
+			matriz[j][y1]=179;
+		}
+	x1=4;
+	y1=38;
+	x2=4;
+	y2=41;
+	for(int j=y1;j<=y2;j++){
+			matriz[x1][j]=196;
+		}
+	matriz[8][39]=192;
+	matriz[8][40]=196;
+	matriz[4][39]=197;
+}
+void cargari(char matriz[fil][col]){
+int x1, y1, x2, y2;
+	x1=6;
+	y1=43;
+	x2=8;
+	y2=43;
+	
+	for(int j=x1;j<=x2;j++){
+			matriz[j][y1]=179;
+		}
+	
+	
+	matriz[4][43]=46;
+	matriz[5][43]=191;
+	matriz[8][43]=192;
+}
+void cargara2(char matriz[fil][col]){
+int x1, y1, x2, y2;
+	
+	x1=5;
+	y1=45;
+	x2=5;
+	y2=49;
+	for(int j=y1;j<=y2;j++){
+			matriz[x1][j]=196;
+		}
+	x1=5;
+	y1=49;
+	x2=8;
+	y2=49;
+	
+	for(int j=x1;j<=x2;j++){
+			matriz[j][y1]=179;
+		}
+	x1=6;
+	y1=45;
+	x2=6;
+	y2=49;
+	for(int j=y1;j<=y2;j++){
+			matriz[x1][j]=196;
+		}
+	x1=7;
+	y1=45;
+	x2=8;
+	y2=45;
+	
+	for(int j=x1;j<=x2;j++){
+			matriz[j][y1]=179;
+		}
+	
+
+	x1=8;
+	y1=45;
+	x2=8;
+	y2=49;
+	for(int j=y1;j<=y2;j++){
+			matriz[x1][j]=196;
+		}
+	matriz[5][45]=218;
+	matriz[8][45]=192;
+	matriz[6][45]=218;
+	matriz[8][50]=92;
+	matriz[6][49]=180;
+	matriz[5][49]=191;
+	matriz[8][49]=217;
+}
+void cargarn(char matriz[fil][col]){
+int x1, y1, x2, y2;
+	x1=5;
+	y1=52;
+	x2=8;
+	y2=52;
+	
+	for(int j=x1;j<=x2;j++){
+			matriz[j][y1]=179;
+		}
+	x1=5;
+	y1=53;
+	x2=5;
+	y2=56;
+	for(int j=y1;j<=y2;j++){
+			matriz[x1][j]=196;
+		}
+	x1=6;
+	y1=56;
+	x2=8;
+	y2=56;
+	
+	for(int j=x1;j<=x2;j++){
+			matriz[j][y1]=179;
+		}
+	matriz[5][52]=195;
+	matriz[5][56]=191;
+	matriz[8][52]=192;
+	matriz[8][56]=192;
+	
+}
