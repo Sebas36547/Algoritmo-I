@@ -1,0 +1,72 @@
+#include <iostream>
+#include "conio.h"
+#include "string.h"
+#include "stdio.h"
+#define fil 20
+
+
+struct registro{
+	char nombre[30];
+	int edad;
+	char sexo;
+	char estado;
+};
+using namespace std;
+void reg(registro matriz[fil], int n);
+void mostrar();
+
+void main()
+{	
+	FILE *ptr;
+	int a;
+	registro matriz[fil];
+	cout<<"ingrese numero de personas: ";
+	cin>>a;
+	reg(matriz,a);
+	ptr=fopen("amigos.dat","ab");//crear archivo
+	fwrite(&matriz,sizeof(matriz),1,ptr);
+	fclose(ptr);
+	mostrar();
+	getch();
+}
+void reg(registro matriz[fil], int n){
+	int d;
+	for(int i=0;i<n;i++){
+			cout<<endl;
+			fflush(stdin);
+			do{
+				cout<<"ingrese el nombre: ";
+				gets(matriz[i].nombre);
+			}while(strlen(matriz[i].nombre)==0);
+
+			do{cout<<"ingrese edad: ";
+			cin>>matriz[i].edad;
+			}while((matriz[i].edad<0)||(matriz[i].edad>120));
+
+			do{
+				cout<<"ingrese sexo: ";
+				cin>>matriz[i].sexo;
+				d=matriz[i].sexo;
+
+			}while((d!=70)&&(d!=77));
+
+			matriz[i].estado= 'A';
+		
+	}
+}
+void mostrar()
+{
+	FILE *ptr;
+	registro matriz;
+	ptr=fopen("amigos.dat","rb");
+	if(ptr!= NULL){
+		fread(&matriz,sizeof(matriz),1,ptr);
+		while(feof(ptr)== false){
+				cout<<"\n"<<matriz.nombre<<"  "<<matriz.edad<<"  "<<matriz.sexo;
+			fread(&matriz,sizeof(matriz),1,ptr);
+		}
+		fclose(ptr);
+	}else{
+		cout<<"no existe";
+	}
+}
