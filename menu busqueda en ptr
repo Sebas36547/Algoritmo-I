@@ -1,0 +1,169 @@
+#include <iostream>
+#include "conio.h"
+#include "string.h"
+#include "stdio.h"
+#define fil 20
+
+
+struct registro{
+	char nombre[30];
+	int edad;
+	char sexo;
+	char estado;
+};
+using namespace std;
+	
+void reg();
+void mostrar();
+void promedio();
+void busqueda();
+
+void main()
+{	int op;
+	cout<<"1. Adicionar"<<endl;
+	cout<<"2. Mostrar "<<endl;
+	cout<<"3. promdeio edad"<<endl;
+	cout<<"4. Busqueda por nreg"<<endl;
+	cout<<"0. Salir"<<endl;
+	cin>>op;
+	switch(op){
+	case 1:{
+		reg();
+		   break;
+		   }
+	case 2:{
+		mostrar();
+		   break;
+		   }
+	case 3:{
+		promedio();
+		   break;
+		   }
+	 case 4:{
+		busqueda();
+		   break;
+		   }
+	case 0:{
+		   cout<<"salir"<<endl;
+		   break;
+		   }
+	default:{
+			cout<<"Valor invalido"<<endl;
+			break;
+			}
+	}
+	
+	getch();
+}
+void reg()
+{		
+		FILE *ptr;
+		registro matriz;
+		do{
+				fflush(stdin);
+				cout<<"ingrese el nombre: ";
+				gets(matriz.nombre);
+			}while(strlen(matriz.nombre)==0);
+
+			do{cout<<"ingrese edad: ";
+			cin>>matriz.edad;
+			}while((matriz.edad<0)||(matriz.edad>120));
+
+			do{
+				cout<<"ingrese sexo: ";
+				cin>>matriz.sexo;
+				
+			}while((matriz.sexo!=70)&&(matriz.sexo!=77));
+
+			matriz.estado= 'A';
+			ptr=fopen("amigos.dat","ab");//crear archivo
+			fwrite(&matriz,sizeof(matriz),1,ptr);
+			fclose(ptr);
+	
+}
+void mostrar()
+{	FILE * ptr;
+	registro matriz;
+	int c=0,q,m;
+	ptr=fopen("amigos.dat","rb");
+	if(ptr!= NULL){
+		cout<<" --------------------------------------"<<endl;
+		cout<<" |ID"<<"   |Nombre"<<"          |Edad"<<"   |Sexo |"<<endl;
+		cout<<" |-----|----------------|-------|-----|"<<endl;
+		fread(&matriz,sizeof(matriz),1,ptr);
+		while(feof(ptr)== false){
+			c++;
+				cout<<" |  "<<c<<"  |"<<matriz.nombre;
+				q=strlen(matriz.nombre);
+				m=15-q;
+				for(int i=0;i<m;i++){
+					cout<<" ";}
+				cout<<" |"<<matriz.edad<<"     |"<<matriz.sexo<<"    |"<<endl;
+			fread(&matriz,sizeof(matriz),1,ptr);
+		}
+		cout<<" --------------------------------------"<<endl;
+		fclose(ptr);
+	}else{
+		cout<<"no existe";
+	}
+}
+void promedio(){
+	registro matriz;
+	FILE *ptr;
+	int promedio=0,cont=0,edadprt,contm=0,contf=0,promediom=0,promediof=0,edadprm,edadprf;
+	ptr=fopen("amigos.dat","rb");
+			if(ptr!=NULL){
+				fread(&matriz,sizeof(matriz),1,ptr);
+				while(feof(ptr)==false){
+						promedio=promedio+matriz.edad;
+						cont++;
+					if(matriz.sexo=='M'){
+						promediom=promediom+matriz.edad;
+						contm++;}
+					else{if(matriz.sexo=='F'){
+						promediof=promediof+matriz.edad;
+						contf++;}
+						}
+				
+					fread(&matriz,sizeof(matriz),1,ptr);
+				}
+				fclose(ptr);
+				edadprt=promedio/cont;
+				if(contm!=0){
+					edadprm=promediom/contm;}
+				if(contf!=0){
+					edadprf=promediof/contf;}
+			}else{
+				cout<<"El archivo no existe"<<endl;
+		}
+		cout<<"la edad promedio total es: "<<edadprt<<endl;
+		if(contm!=0){
+			cout<<"la edad promedio de hombres es: "<<edadprm<<endl;}
+		else{
+			}
+		if(contf!=0){
+			cout<<"la edad promedio de mujeres es: "<<edadprf<<endl;}
+		else{
+			}
+		
+
+}
+void busqueda(){
+	registro matriz;
+	FILE *ptr;
+	int n,c=0;
+	cout<<"Ingrese ID a buscar: ";
+	cin>>n;
+	ptr=fopen("amigos.dat","rb");
+			if(ptr!=NULL){
+				fseek(ptr,(n-1)*sizeof(matriz),SEEK_SET);
+				fread(&matriz,sizeof(matriz),1,ptr);
+		if(feof(ptr)== false){
+			
+			cout<<" "<<matriz.nombre<<"  "<<matriz.edad<<"  "<<matriz.sexo;
+		}
+		
+		}	else {
+		
+			}
+}
