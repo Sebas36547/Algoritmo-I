@@ -18,7 +18,6 @@ int op,matriz [fil][col],matriz2 [fil][col],matsuma[fil][col],fila,columna,fila2
 	cout<<"2. Suma de matrices"<<endl;
 	cout<<"3. Multiplicacion de matrices"<<endl;
 	cout<<"4. Calcular matriz transpuesta"<<endl;
-	cout<<"5. Calcular matriz inversa"<<endl;
 	cout<<"0. Salir"<<endl;
 	cin>>op;
 		switch(op){
